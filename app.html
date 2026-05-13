@@ -1,0 +1,276 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>AHMAD SHOP - Professional Enterprise</title>
+    <script src="https://cdn.tailwindcss.com"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.12.2/gsap.min.js"></script>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    
+    <style>
+        :root {
+            --primary-blue: #2563eb;
+            --deep-blue: #1e3a8a;
+            --soft-white: #ffffff;
+            --bg-gray: #f8fafc;
+            --glass: rgba(255, 255, 255, 0.8);
+        }
+
+        body {
+            background-color: var(--bg-gray);
+            font-family: 'Inter', sans-serif;
+            overflow-x: hidden;
+            margin: 0; padding-bottom: 100px;
+        }
+
+        /* --- PRELOADER FIX --- */
+        #loader {
+            position: fixed;
+            inset: 0;
+            background: white;
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            justify-content: center;
+            z-index: 9999;
+            transition: opacity 0.5s ease;
+        }
+
+        /* --- PROFESSIONAL UI COMPONENTS --- */
+        .glass-card {
+            background: var(--glass);
+            backdrop-filter: blur(15px);
+            border: 1px solid rgba(37, 99, 235, 0.1);
+            border-radius: 24px;
+            box-shadow: 0 10px 30px rgba(0,0,0,0.03);
+            transition: all 0.4s cubic-bezier(0.175, 0.885, 0.32, 1.275);
+        }
+
+        .glass-card:hover {
+            transform: translateY(-8px);
+            border-color: var(--primary-blue);
+            box-shadow: 0 20px 40px rgba(37, 99, 235, 0.1);
+        }
+
+        /* --- NAVIGATION --- */
+        .bottom-nav {
+            position: fixed;
+            bottom: 20px;
+            left: 50%;
+            transform: translateX(-50%);
+            width: 90%;
+            max-width: 400px;
+            background: var(--deep-blue);
+            border-radius: 30px;
+            display: flex;
+            justify-content: space-around;
+            padding: 15px;
+            z-index: 1000;
+            box-shadow: 0 15px 35px rgba(30, 58, 138, 0.3);
+        }
+
+        .nav-link {
+            color: #93c5fd;
+            text-align: center;
+            font-size: 10px;
+            font-weight: 700;
+            text-transform: uppercase;
+            transition: 0.3s;
+        }
+
+        .nav-link.active { color: white; }
+        .nav-link i { font-size: 1.2rem; display: block; margin-bottom: 4px; }
+
+        /* --- CONTENT SECTIONS --- */
+        .page-section { display: none; opacity: 0; padding: 20px; }
+        .page-section.active { display: block; opacity: 1; }
+
+        /* --- PRODUCT STYLING --- */
+        .product-img {
+            width: 100%;
+            height: 150px;
+            background: #e2e8f0;
+            border-radius: 15px;
+            margin-bottom: 15px;
+            overflow: hidden;
+        }
+
+        .product-img img { width: 100%; height: 100%; object-fit: cover; }
+
+    </style>
+</head>
+<body>
+
+    <div id="loader">
+        <div class="w-16 h-16 border-4 border-blue-600 border-t-transparent rounded-full animate-spin"></div>
+        <h2 class="mt-4 font-bold text-blue-900 tracking-widest">AHMAD SHOP</h2>
+    </div>
+
+    <div class="max-w-md mx-auto min-h-screen relative bg-white">
+        
+        <header class="p-6 flex justify-between items-center sticky top-0 bg-white/80 backdrop-blur-md z-50">
+            <div>
+                <h1 class="text-2xl font-black text-blue-600">AHMAD <span class="text-slate-800">SHOP</span></h1>
+                <span class="text-[9px] font-bold text-slate-400 tracking-[3px] uppercase">Enterprise v4.0</span>
+            </div>
+            <div class="w-10 h-10 rounded-full border-2 border-blue-600 flex items-center justify-center bg-blue-50">
+                <i class="fa-solid fa-user text-blue-600"></i>
+            </div>
+        </header>
+
+        <section id="home" class="page-section active">
+            <div class="bg-gradient-to-br from-blue-600 to-blue-800 rounded-[30px] p-8 text-white mb-8">
+                <h2 class="text-3xl font-black leading-tight">Modern Tech <br> For Your Business</h2>
+                <p class="text-sm opacity-80 mt-4 leading-relaxed">Accessories, Cloud Bots, and Digital Solutions integrated in one platform.</p>
+                <button onclick="switchTab('store')" class="mt-6 bg-white text-blue-600 px-8 py-3 rounded-xl font-black text-xs uppercase tracking-widest shadow-lg">Browse Store</button>
+            </div>
+
+            <div class="grid grid-cols-2 gap-4">
+                <div class="glass-card p-4 text-center border-b-4 border-blue-600">
+                    <h3 class="text-2xl font-black text-blue-600">1.5k</h3>
+                    <p class="text-[10px] font-bold text-slate-500">HAPPY USERS</p>
+                </div>
+                <div class="glass-card p-4 text-center border-b-4 border-slate-800">
+                    <h3 class="text-2xl font-black text-slate-800">99%</h3>
+                    <p class="text-[10px] font-bold text-slate-500">BOT UPTIME</p>
+                </div>
+            </div>
+        </section>
+
+        <section id="store" class="page-section">
+            <h2 class="text-xl font-black mb-6">Latest <span class="text-blue-600">Accessories</span></h2>
+            <div class="grid grid-cols-1 gap-6">
+                <div class="glass-card p-4">
+                    <div class="product-img">
+                        <img src="https://images.unsplash.com/photo-1603302576837-37561b2e2302?w=500" alt="Laptop">
+                    </div>
+                    <div class="flex justify-between items-center">
+                        <h4 class="font-bold">Premium Slim Case</h4>
+                        <span class="text-blue-600 font-black">Rs. 1,500</span>
+                    </div>
+                    <p class="text-[10px] text-slate-500 mt-1">High durability, shockproof material.</p>
+                    <button class="w-full mt-4 bg-blue-600 text-white py-3 rounded-xl text-xs font-bold">BUY NOW</button>
+                </div>
+                <div class="glass-card p-4">
+                    <div class="product-img">
+                        <img src="https://images.unsplash.com/photo-1505740420928-5e560c06d30e?w=500" alt="Audio">
+                    </div>
+                    <div class="flex justify-between items-center">
+                        <h4 class="font-bold">Wireless Audio Pro</h4>
+                        <span class="text-blue-600 font-black">Rs. 3,200</span>
+                    </div>
+                    <p class="text-[10px] text-slate-500 mt-1">Crystal clear sound with noise cancellation.</p>
+                    <button class="w-full mt-4 bg-slate-900 text-white py-3 rounded-xl text-xs font-bold">BUY NOW</button>
+                </div>
+            </div>
+        </section>
+
+        <section id="collection" class="page-section">
+            <h2 class="text-xl font-black mb-6 text-blue-600">Technical <span class="text-slate-800">Vault</span></h2>
+            <div class="space-y-4">
+                <div class="glass-card p-5 flex items-center gap-4">
+                    <i class="fa-brands fa-python text-3xl text-blue-600"></i>
+                    <div>
+                        <h4 class="font-bold text-sm">Python Automation</h4>
+                        <p class="text-[10px] text-slate-400">Core business logic scripts</p>
+                    </div>
+                </div>
+                <div class="glass-card p-5 flex items-center gap-4">
+                    <i class="fa-solid fa-cloud-arrow-up text-3xl text-blue-600"></i>
+                    <div>
+                        <h4 class="font-bold text-sm">Cloud Bot Deployment</h4>
+                        <p class="text-[10px] text-slate-400">AWS / Heroku Integration</p>
+                    </div>
+                </div>
+                <div class="glass-card p-5 flex items-center gap-4">
+                    <i class="fa-brands fa-github text-3xl text-slate-900"></i>
+                    <div>
+                        <h4 class="font-bold text-sm">GitHub Repository</h4>
+                        <p class="text-[10px] text-slate-400">Managed code versioning</p>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <section id="about" class="page-section">
+            <h2 class="text-xl font-black mb-6">About <span class="text-blue-600">Enterprise</span></h2>
+            <div class="glass-card p-6">
+                <h3 class="text-blue-600 font-bold mb-2">Our Story</h3>
+                <p class="text-sm text-slate-600 leading-relaxed">
+                    Ahmad Shop is not just a retail store; it's a technology-driven hub. We specialize in bringing modern solutions to traditional sectors, using Python, AI, and Cloud systems.
+                </p>
+                <div class="mt-6 border-t pt-6">
+                    <h4 class="text-xs font-black text-slate-400 uppercase tracking-widest mb-4">Core Skills</h4>
+                    <ul class="text-xs space-y-3 font-bold text-slate-700">
+                        <li><i class="fa-solid fa-check text-blue-600 mr-2"></i> Custom Bot Development</li>
+                        <li><i class="fa-solid fa-check text-blue-600 mr-2"></i> E-commerce Scaling</li>
+                        <li><i class="fa-solid fa-check text-blue-600 mr-2"></i> GitHub Management</li>
+                    </ul>
+                </div>
+            </div>
+        </section>
+
+        <nav class="bottom-nav">
+            <div class="nav-link active" onclick="switchTab('home', this)">
+                <i class="fa-solid fa-house"></i>
+                <span>Home</span>
+            </div>
+            <div class="nav-link" onclick="switchTab('collection', this)">
+                <i class="fa-solid fa-folder-tree"></i>
+                <span>Collection</span>
+            </div>
+            <div class="nav-link" onclick="switchTab('store', this)">
+                <i class="fa-solid fa-shop"></i>
+                <span>Store</span>
+            </div>
+            <div class="nav-link" onclick="switchTab('about', this)">
+                <i class="fa-solid fa-info-circle"></i>
+                <span>About</span>
+            </div>
+        </nav>
+    </div>
+
+    <script>
+        // Tab Switching Logic
+        function switchTab(tabId, element) {
+            // Sections hide karein
+            document.querySelectorAll('.page-section').forEach(section => {
+                section.classList.remove('active');
+                section.style.opacity = "0";
+            });
+
+            // Active section show karein
+            const activeSection = document.getElementById(tabId);
+            activeSection.classList.add('active');
+            
+            // GSAP Animation for smooth entry
+            gsap.to(activeSection, {
+                duration: 0.5,
+                opacity: 1,
+                y: 0,
+                ease: "power2.out"
+            });
+
+            // Update Nav Icons
+            if(element) {
+                document.querySelectorAll('.nav-link').forEach(link => link.classList.remove('active'));
+                element.classList.add('active');
+            }
+        }
+
+        // Hide Loader once page is ready
+        window.onload = () => {
+            setTimeout(() => {
+                const loader = document.getElementById('loader');
+                loader.style.opacity = "0";
+                setTimeout(() => {
+                    loader.style.display = "none";
+                    // Initial animation for Home
+                    gsap.from("#home", { duration: 1, y: 30, opacity: 0 });
+                }, 500);
+            }, 1500); // 1.5 second loading feel
+        };
+    </script>
+</body>
+</html>
